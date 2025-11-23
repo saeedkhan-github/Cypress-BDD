@@ -9,4 +9,4 @@ Feature: User Login
     And I click on the login button
     Then I should be logged in successfully and redirected to the dashboard page
 
- 
+  
