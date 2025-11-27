@@ -4,11 +4,13 @@ Given('I open the OrangeHRM login page', () => {
   cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 });
 
-When('I enter valid username {string} and password {string}', (username, password) => {
-  cy.get('input[name="username"]').type(username);
-  cy.get('input[name="password"]').type(password);
+When('I log in as a registered user with valid credentials', (data) => {
+  data.hashes().forEach((user) => {
+    cy.get('input[name="username"]').type(user.username);
+    cy.get('input[name="password"]').type(user.password);
+  });
 });
-When('I click on the login button', () => {
+When('I click on the login button', () => { 
   cy.get('button[type="submit"]').click();
 });
 

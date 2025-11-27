@@ -5,13 +5,15 @@ const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esb
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: 'cypress/features/**/*.feature',
+    experimentalPromptCommand: true,
+    specPattern: 'cypress/e2e/features/**/*.feature',
     supportFile: 'cypress/support/e2e.js',
     setupNodeEvents: async (on, config) => {
       await addCucumberPreprocessorPlugin(on, config);
       on('file:preprocessor', createBundler({
         plugins: [createEsbuildPlugin(config)],
       }));
+      require('@shelex/cypress-allure-plugin/writer')(on, config);
       return config;
     },
   },

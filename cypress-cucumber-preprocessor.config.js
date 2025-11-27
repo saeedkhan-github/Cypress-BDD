@@ -1,3 +1,3 @@
 module.exports = {
-  stepDefinitions: 'cypress/features/step_definitions/**/*.js',
+  stepDefinitions: 'cypress/e2e/step_definitions/**/*.js',
 };
